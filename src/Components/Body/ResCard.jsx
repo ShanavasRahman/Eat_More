@@ -1,8 +1,3 @@
-import ResObjs from "../Util/Util";
-
-
-
-
 
 const ResCard = ({props}) => {
     return (
