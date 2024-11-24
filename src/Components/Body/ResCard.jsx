@@ -1,7 +1,7 @@
 
 const ResCard = ({props}) => {
     return (
-      <div className="bg-gray-100 border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1 w-64 mb-6">
+      <div className="bg-gray-300 border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1 w-64 mb-6">
         <div className="p-5">
           <img
             className="w-52 h-36 object-fill rounded-t-lg"

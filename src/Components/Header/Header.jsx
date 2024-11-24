@@ -19,9 +19,9 @@ const Header = () => {
           <input 
             type="text" 
             placeholder="Search..." 
-            className="bg-gray-800/50 text-white placeholder-gray-400 p-2 rounded-l-full  focus:outline-none focus:ring focus:ring-blue-400"
+            className="bg-gray-800/50 text-white placeholder-gray-400 p-2 rounded-l-full  focus:outline-none"
           />
-          <button className="bg-neutral-400 hover:bg-neutral-900 hover:text-white text-black px-1 py-2 pr-2 focus:border-none rounded-r-full transition-colors duration-300">
+          <button className="bg-gray-800/50 h text-white  py-2 pr-2 focus:border-none rounded-r-full transition-colors duration-300">
            <RiSearchLine className='w-10 h-6'/>
           </button>
         </div>
