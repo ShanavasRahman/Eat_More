@@ -5,7 +5,6 @@ import ResList from "../Utils/resList";
 const Body = () => {
   const [res, setRes] = useState(ResList);
   function filterRes() {
-    console.log("hello")
     const filteredRes = res.filter((restuarant) => restuarant.avgRating >= 4.5);
     setRes(filteredRes);
   }
