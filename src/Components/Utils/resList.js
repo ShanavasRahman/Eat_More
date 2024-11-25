@@ -24,7 +24,7 @@ const ResList = [
       name: "Domino's Pizza",
       locality: "Palakkad",
       costForTwo: "₹400 for two",
-      cuisines: ["Pizzas", "Italian", "Pastas", "Desserts"],
+      cuisines: ["Pizzas", "Italian", "Pastas"],
       avgRating: 4.3,
       totalRatingsString: "1.9K+",
       cloudinaryImageId: "023a63cc663b328750810b48abd228b4"

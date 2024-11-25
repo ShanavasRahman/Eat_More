@@ -4,8 +4,8 @@ import { Logo_Url } from '../Utils/constants';
 
 const Header = () => {
   return (
-    <header className="bg-black/50 backdrop-blur-md text-white sticky top-0 z-50 shadow-[0_2.4rem_4.8rem_rgba(0,0,0,0.075)] rounded-[11px] mx-4 mt-4">
-      <div className="container mx-auto flex justify-between items-center py-4 px-6">
+    <header className="bg-black/50 backdrop-blur-md text-white sticky top-0 z-50 shadow-[0_2.4rem_4.8rem_rgba(0,0,0,0.075)] rounded-[11px] mx-4 mt-4 flex justify-center">
+      <div className="container mx-5 flex justify-between items-center py-4 w-full">
         {/* Logo Section */}
         <div>
           <img 
@@ -28,16 +28,14 @@ const Header = () => {
         </div>
 
         {/* Navigation Links */}
-        <nav>
-          <ul className="flex gap-8 text-lg font-medium">
+        <nav className='flex'>
+          <ul className="flex gap-10 text-lg font-medium">
             <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer">Home</li>
             <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer">Services</li>
             <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer">About</li>
             <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer">Contact</li>
-            <li>
-              <BsCart3 className="w-8 h-8 hover:scale-125 transition-transform duration-300 cursor-pointer text-neutral-900" />
-            </li>
           </ul>
+          <BsCart3 className="w-8 h-8 hover:scale-125 transition-transform duration-300 cursor-pointer ml-28 text-blue-gray-700" />
         </nav>
       </div>
     </header>

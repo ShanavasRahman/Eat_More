@@ -13,7 +13,7 @@ const ResCard = ({props}) => {
                 <h5 className="text-lg font-semibold mt-4">{ props.name}</h5>
           <p className="text-sm text-gray-600 mt-2">Locality: {props.locality} </p>
           <p className="text-sm text-gray-600">Cost for two:{props.costForTwo} </p>
-          <p className="text-sm text-gray-600">Cuisines:{props.cuisines} </p>
+          <p className="text-sm text-gray-600">Cuisines:{props.cuisines.join(",")} </p>
           <p className="text-sm text-gray-600">Average rating:{props.avgRating} </p>
           <p className="text-sm text-gray-600">Total ratings:{props.totalRatingsString} </p>
         </div>
