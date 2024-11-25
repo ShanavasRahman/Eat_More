@@ -33,8 +33,8 @@ const Body = () => {
 
   if (res.length === 0) {
     return (
-      <div className='flex flex-wrap p-8 gap-10 justify-center'>
-        {Array.from({ length: 8 }).map((_, index) => (
+      <div className='flex flex-wrap p-8 pt-16 gap-10'>
+        {Array.from({ length: 10 }).map((_, index) => (
           <Shimmer key={index} />
         ))}
       </div>

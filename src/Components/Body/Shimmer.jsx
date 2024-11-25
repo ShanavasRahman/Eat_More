@@ -2,8 +2,8 @@ import React from "react";
 
 const Shimmer = () => {
   return (
-    <div className='relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-72 animate-pulse'>
-      <div className='relative grid h-44 mx-4 mt-4 overflow-hidden text-gray-700 bg-gray-300 bg-clip-border rounded-xl place-items-center'>
+    <div className='relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-64 animate-pulse'>
+      <div className='relative grid h-40 mx-4 mt-4 overflow-hidden text-gray-700 bg-gray-300 bg-clip-border rounded-xl place-items-center'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           fill='none'
