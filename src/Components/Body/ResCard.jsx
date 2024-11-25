@@ -1,3 +1,5 @@
+import { Image_Url } from "../Utils/constants";
+
 
 const ResCard = ({props}) => {
     return (
@@ -5,7 +7,7 @@ const ResCard = ({props}) => {
         <div className="p-5">
           <img
             className="w-52 h-36 object-fill rounded-t-lg"
-            src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${props.cloudinaryImageId}`}
+            src={Image_Url+props.cloudinaryImageId}
             alt="Restaurant logo"
           />
                 <h5 className="text-lg font-semibold mt-4">{ props.name}</h5>

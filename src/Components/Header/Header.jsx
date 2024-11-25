@@ -1,5 +1,6 @@
 import { BsCart3 } from 'react-icons/bs';
 import { RiSearchLine } from 'react-icons/ri';
+import { Logo_Url } from '../Utils/constants';
 
 const Header = () => {
   return (
@@ -8,7 +9,7 @@ const Header = () => {
         {/* Logo Section */}
         <div>
           <img 
-            src="https://cdn.dribbble.com/userupload/5966432/file/original-03c1fe57f7907074905632cbf187f058.png?resize=400x0" 
+            src={Logo_Url} 
             alt="Logo" 
             className="w-16 h-16 rounded-full hover:scale-110 transition-transform duration-300"
           />

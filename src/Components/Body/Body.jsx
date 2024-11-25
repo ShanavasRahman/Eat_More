@@ -1,6 +1,6 @@
 import React from "react";
 import ResCard from "./ResCard";
-import ResObjs from "../Util/Util";
+import ResList from "../Utils/resList";
 
 const Body = () => {
   return (
@@ -11,7 +11,7 @@ const Body = () => {
         </button>
       </div>
       <div className='flex flex-wrap p-8 gap-10'>
-        {ResObjs.map((restuarant) => (
+        {ResList.map((restuarant) => (
           <ResCard props={restuarant} key={restuarant.id} />
         ))}
       </div>
