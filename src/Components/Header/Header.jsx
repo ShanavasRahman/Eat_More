@@ -1,6 +1,6 @@
 import { BsCart3 } from 'react-icons/bs';
 import { RiSearchLine } from 'react-icons/ri';
-import { Logo_Url } from '../Utils/constants';
+import { Logo_Url } from '../../Utils/constants';
 
 const Header = () => {
   return (

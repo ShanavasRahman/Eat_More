@@ -50,7 +50,7 @@ const Body = () => {
   };
 
   return res.length == 0 ? (
-    <div className='flex flex-wrap p-8 pt-16 gap-10'>
+    <div className='flex flex-wrap p-8 pt-16 gap-10 bg-gray-400'>
       {Array.from({ length: 10 }).map((_, index) => (
         <Shimmer key={index} />
       ))}

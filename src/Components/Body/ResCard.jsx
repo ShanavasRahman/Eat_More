@@ -1,4 +1,4 @@
-import { Image_Url } from "../Utils/constants";
+import { Image_Url } from "../../Utils/constants";
 
 
 const ResCard = ({props}) => {
