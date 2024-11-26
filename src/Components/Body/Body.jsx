@@ -33,15 +33,21 @@ const Body = () => {
     setRes(filteredRes);
   }
 
-  // if (res.length === 0) {
-  //   return (
-  //     <div className='flex flex-wrap p-8 pt-16 gap-10'>
-  //       {Array.from({ length: 10 }).map((_, index) => (
-  //         <Shimmer key={index} />
-  //       ))}
-  //     </div>
-  //   );
-  // }
+  const handleSearch = () => {
+    let filteredRes = res.filter((restuarant) =>
+      restuarant.name.toLowerCase().includes(text.toLowerCase())
+    );
+    filteredRes.length > 0
+      ? setFilteredRestuarant(filteredRes)
+      : toast.error("No restuarants found", { position: "top-right" });
+    setText("");
+  };
+
+  const handleSearchByEnter = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
 
   return res.length == 0 ? (
     <div className='flex flex-wrap p-8 pt-16 gap-10'>
@@ -65,16 +71,11 @@ const Body = () => {
           onChange={(e) => {
             setText(e.target.value);
           }}
+          onKeyDown={handleSearchByEnter}
         />
         <button
           className='bg-gray-800/50 h text-white py-2 pr-2 focus:border-none rounded-r-full transition-colors duration-300'
-          onClick={() => {
-            let filteredRes = res.filter((restuarant) =>
-              restuarant.name.toLowerCase().includes(text.toLowerCase())
-            );
-            filteredRes.length > 0 ? setFilteredRestuarant(filteredRes) : toast.error("No restuarants found", { position: "top-right" });
-            setText("");
-          }}>
+          onClick={handleSearch}>
           <RiSearchLine className='w-10 h-6' />
         </button>
       </div>
