@@ -1,6 +1,7 @@
 import { BsCart3 } from 'react-icons/bs';
 import { RiSearchLine } from 'react-icons/ri';
 import { Logo_Url } from '../../Utils/constants';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -30,10 +31,10 @@ const Header = () => {
         {/* Navigation Links */}
         <nav className='flex'>
           <ul className="flex gap-10 text-lg font-medium">
-            <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer">Home</li>
-            <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer">Services</li>
-            <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer">About</li>
-            <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer">Contact</li>
+            <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer"><Link to="/">Home</Link></li>
+            <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer"><Link to="/services">Services</Link></li>
+            <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer"><Link to="/about">About</Link></li>
+            <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer"><Link to="/contact">Contact</Link></li>
           </ul>
           <BsCart3 className="w-8 h-8 hover:scale-125 transition-transform duration-300 cursor-pointer ml-28 text-blue-gray-700" />
         </nav>

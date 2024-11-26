@@ -3,6 +3,7 @@ import ResCard from "./ResCard";
 import Shimmer from "./Shimmer";
 import { RiSearchLine } from "react-icons/ri";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [res, setRes] = useState([]);
@@ -15,7 +16,7 @@ const Body = () => {
   async function fetchData() {
     try {
       const response = await fetch(
-        "https://raw.githubusercontent.com/ShanavasRahman/data/refs/heads/master/data.json"
+        "https://raw.githubusercontent.com/ShanavasRahman/data/refs/heads/master/cardData.json"
       );
       if (!response.ok) {
         throw new Error(`Failed to fetch. Status: ${response.status}`);
@@ -80,8 +81,9 @@ const Body = () => {
         </button>
       </div>
       <div className='flex flex-wrap p-8 gap-10'>
-        {FilteredRestuarant.map((restuarant) => (
-          <ResCard props={restuarant} key={restuarant.id} />
+          {FilteredRestuarant.map((restuarant) => (
+          
+          <Link to={`/resmenu/${restuarant.id}`} key={restuarant.id}><ResCard props={restuarant} /></Link>
         ))}
       </div>
     </div>
