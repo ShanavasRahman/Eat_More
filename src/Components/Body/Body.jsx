@@ -17,7 +17,6 @@ const Body = () => {
   useEffect(() => {
     setRes(data);
     setFilteredRestuarant(data);    
-    console.log("useeffect triggered");
   },[data])
 
   function filterRes() {
