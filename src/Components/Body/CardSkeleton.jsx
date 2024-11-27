@@ -1,6 +1,6 @@
 import React from "react";
 
-const Shimmer = () => {
+const CardSkeleton = () => {
   return (
     <div className='relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-64 animate-pulse'>
       <div className='relative grid h-40 mx-4 mt-4 overflow-hidden text-gray-700 bg-gray-300 bg-clip-border rounded-xl place-items-center'>
@@ -47,4 +47,4 @@ const Shimmer = () => {
   );
 };
 
-export default Shimmer;
+export default CardSkeleton;

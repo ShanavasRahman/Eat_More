@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className="bg-black/50 backdrop-blur-md text-white sticky top-0 z-50 shadow-[0_2.4rem_4.8rem_rgba(0,0,0,0.075)] rounded-[11px] mx-4 mt-4 flex justify-center">
+    <header className=" bg-black/50 backdrop-blur-md text-white sticky top-0 z-50 shadow-[0_2.4rem_4.8rem_rgba(0,0,0,0.075)]  flex justify-center ">
       <div className="container mx-5 flex justify-between items-center py-4 w-full">
         {/* Logo Section */}
         <div>

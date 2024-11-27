@@ -1,37 +1,28 @@
 import React, { useEffect, useState } from "react";
 import ResCard from "./ResCard";
-import Shimmer from "./Shimmer";
+import CardSkeleton from "./CardSkeleton";
 import { RiSearchLine } from "react-icons/ri";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { Data_Api } from "../../Utils/constants";
+import useFetchData from "../../Utils/useFetch";
 
 const Body = () => {
+  console.log("im here")
   const [res, setRes] = useState([]);
   const [text, setText] = useState("");
-  const [FilteredRestuarant, setFilteredRestuarant] = useState([]);
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const [filteredRestuarant, setFilteredRestuarant] = useState([]);
 
-  async function fetchData() {
-    try {
-      const response = await fetch(
-        "https://raw.githubusercontent.com/ShanavasRahman/data/refs/heads/master/cardData.json"
-      );
-      if (!response.ok) {
-        throw new Error(`Failed to fetch. Status: ${response.status}`);
-      }
-      const data = await response.json();
-      setRes(data);
-      setFilteredRestuarant(data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
+  const data = useFetchData();
+  useEffect(() => {
+    setRes(data);
+    setFilteredRestuarant(data);    
+    console.log("useeffect triggered");
+  },[data])
 
   function filterRes() {
     const filteredRes = res.filter((restuarant) => restuarant.avgRating > 4.3);
-    setRes(filteredRes);
+    setFilteredRestuarant(filteredRes);
   }
 
   const handleSearch = () => {
@@ -51,14 +42,14 @@ const Body = () => {
   };
 
   return res.length == 0 ? (
-    <div className='flex flex-wrap p-8 pt-16 gap-10 bg-gray-400'>
+    <div className='flex flex-wrap justify-center p-8 pt-16 gap-10 bg-gray-400'>
       {Array.from({ length: 10 }).map((_, index) => (
-        <Shimmer key={index} />
+        <CardSkeleton key={index} />
       ))}
     </div>
   ) : (
     <div>
-      <div className='pl-8 pt-8 flex'>
+      <div className='pl-12 pt-8 flex '>
         <button
           className='bg-blue-gray-200 px-7 py-2 rounded-full text-blue-gray-900'
           onClick={filterRes}>
@@ -80,10 +71,11 @@ const Body = () => {
           <RiSearchLine className='w-10 h-6' />
         </button>
       </div>
-      <div className='flex flex-wrap p-8 gap-10'>
-          {FilteredRestuarant.map((restuarant) => (
-          
-          <Link to={`/resmenu/${restuarant.id}`} key={restuarant.id}><ResCard props={restuarant} /></Link>
+      <div className='flex flex-wrap p-8 gap-10 justify-center'>
+        {filteredRestuarant.map((restuarant) => (
+          <Link to={`/resmenu/${restuarant.id}`} key={restuarant.id}>
+            <ResCard props={restuarant} />
+          </Link>
         ))}
       </div>
     </div>
