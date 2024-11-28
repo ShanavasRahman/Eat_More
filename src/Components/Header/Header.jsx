@@ -2,10 +2,15 @@ import { BsCart3 } from 'react-icons/bs';
 import { RiSearchLine } from 'react-icons/ri';
 import { Logo_Url } from '../../Utils/constants';
 import { Link } from 'react-router-dom';
+import { CiWifiOn } from "react-icons/ci";
+import { CiWifiOff } from "react-icons/ci";
+import useOnlineStatus from '../../Utils/useStatus';
+
 
 const Header = () => {
+  const onlineStatus = useOnlineStatus();
   return (
-    <header className=" bg-black/50 backdrop-blur-md text-white sticky top-0 z-50 shadow-[0_2.4rem_4.8rem_rgba(0,0,0,0.075)]  flex justify-center ">
+    <header className=" bg-black/50 backdrop-blur-md text-white sticky top-0 z-50 shadow-[0_2.4rem_4.8rem_rgba(0,0,0,0.075)]  flex justify-around ">
       <div className="container mx-5 flex justify-between items-center py-4 w-full">
         {/* Logo Section */}
         <div>
@@ -29,7 +34,7 @@ const Header = () => {
         </div>
 
         {/* Navigation Links */}
-        <nav className='flex'>
+        <nav className='flex items-center'>
           <ul className="flex gap-10 text-lg font-medium">
             <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer"><Link to="/">Home</Link></li>
             <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer"><Link to="/services">Services</Link></li>
@@ -37,6 +42,7 @@ const Header = () => {
             <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer"><Link to="/contact">Contact</Link></li>
           </ul>
           <BsCart3 className="w-8 h-8 hover:scale-125 transition-transform duration-300 cursor-pointer ml-28 text-blue-gray-700" />
+          {onlineStatus?<CiWifiOn className='text-green-600 mx-16 w-10 h-10'/>:<CiWifiOff className='text-red-600 mx-16 w-10 h-10'/>}
         </nav>
       </div>
     </header>

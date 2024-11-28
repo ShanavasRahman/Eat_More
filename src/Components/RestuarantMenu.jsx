@@ -2,23 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CardSkeleton from "./Body/CardSkeleton";
 import { Data_Api, Image_Url } from "../Utils/constants";
+import useFetchData from "../Utils/useFetch";
 
 const RestaurantMenu = () => {
-  const [res, setRes] = useState([]);
   const { id } = useParams();
+  let restaurant = [];
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const data = useFetchData();
+  if (data.length > 0) {
+    const filteredRes = data.filter((res) => res.id === id);
+    restaurant = filteredRes[0];
+  }
 
-  const fetchData = async () => {
-    const response = await fetch(Data_Api);
-    const data = await response.json();
-    const filteredRes = data.filter((res) => res.id == id);
-    setRes(filteredRes);
-  };
-
-  if (res.length === 0) {
+  if (restaurant.length === 0) {
     return (
       <div className='flex justify-center bg-gray-500 p-4 gap-32 flex-wrap'>
         <CardSkeleton />
@@ -27,9 +23,6 @@ const RestaurantMenu = () => {
       </div>
     );
   }
-
-  const restaurant = res[0]; // Take the first restaurant from the filtered list
-  console.log(restaurant.recommendedFoods);
 
   return (
     <div className='p-6 bg-gray-100 min-h-screen'>

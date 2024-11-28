@@ -6,10 +6,8 @@ import { RouterProvider } from "react-router-dom";
 import appRouter from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <ThemeProvider>
-      <RouterProvider router={appRouter}/>
-    </ThemeProvider>
+  <ThemeProvider>
+    <RouterProvider router={appRouter} />
     <Toaster />
-  </StrictMode>
+  </ThemeProvider>
 );

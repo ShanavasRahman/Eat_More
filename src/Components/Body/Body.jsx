@@ -12,11 +12,13 @@ const Body = () => {
   const [res, setRes] = useState([]);
   const [text, setText] = useState("");
   const [filteredRestuarant, setFilteredRestuarant] = useState([]);
-
+  console.log("body triggered");
   const data = useFetchData();
   useEffect(() => {
-    setRes(data);
-    setFilteredRestuarant(data);    
+    if (data.length > 0) {
+      setRes(data);
+      setFilteredRestuarant(data);
+    }  
   },[data])
 
   function filterRes() {
@@ -40,7 +42,7 @@ const Body = () => {
     }
   };
 
-  return res.length == 0 ? (
+  return filteredRestuarant.length == 0 ? (
     <div className='flex flex-wrap justify-center p-8 pt-16 gap-10 bg-gray-400'>
       {Array.from({ length: 10 }).map((_, index) => (
         <CardSkeleton key={index} />
