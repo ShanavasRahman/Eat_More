@@ -7,7 +7,8 @@ import Services from "./Components/Services";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
 import ErrorPage from "./Components/ErrorPage";
-import RestuarantMenu from "./Components/RestuarantMenu";
+import { lazy, Suspense } from "react";
+import CardSkeleton from "./Components/Body/CardSkeleton";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
     </div>
   );
 }
+
+const RestaurantMenu = lazy(() => import("./Components/RestuarantMenu"));
 
 const appRouter = createBrowserRouter([
   {
@@ -42,7 +45,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/resmenu/:id",
-        element:<RestuarantMenu/>
+        element: <Suspense fallback={<div><CardSkeleton/></div>}><RestaurantMenu/></Suspense>
       }
     ],
     errorElement:<ErrorPage/>

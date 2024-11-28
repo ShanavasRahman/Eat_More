@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CardSkeleton from "./Body/CardSkeleton";
-import { Data_Api, Image_Url } from "../Utils/constants";
+import { Image_Url } from "../Utils/constants";
 import useFetchData from "../Utils/useFetch";
 
 const RestaurantMenu = () => {
