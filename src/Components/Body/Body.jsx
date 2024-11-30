@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import ResCard, { resCardWithPromoted } from "./ResCard";
 import CardSkeleton from "./CardSkeleton";
-import { RiSearchLine } from "react-icons/ri";
-import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import useFetchData from "../../Utils/useFetch";
 import resDetails from "../useContextApi";
