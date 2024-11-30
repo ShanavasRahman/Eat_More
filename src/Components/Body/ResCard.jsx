@@ -33,7 +33,7 @@ const ResCard = (props) => {
 export const resCardWithPromoted = (RestuarantCard) => {
   return (props) => (
     <div className='hover:-translate-y-1'>
-      <h1 className="absolute z-10 bg-gray-800 text-white text-xs font-semibold px-3 py-1 rounded-l-sm after:content-[''] after:absolute after:top-full after:left-0 after:border-t-[6px] after:border-t-gray-800 after:border-l-[6px] after:border-l-transparent after:border-r-[6px] after:border-r-transparent">
+      <h1 className="absolute z-10 bg-gray-800 opacity-70 text-white text-xs font-semibold px-3 py-1 my-1 mx-1 rounded-l-sm after:content-[''] after:absolute after:top-full after:left-0 after:border-t-[6px] after:border-t-gray-800 after:border-l-[6px] after:border-l-transparent after:border-r-[6px] after:border-r-transparent">
         Promoted
       </h1>
       <RestuarantCard {...props} />
