@@ -1,7 +1,5 @@
 import { createContext } from "react";
 
-const resDetails = createContext({
-    userLoggedIn: "Shanavas is here"
-});
+const resDetails = createContext();
 
 export default resDetails;

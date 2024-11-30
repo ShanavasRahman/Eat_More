@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import CardSkeleton from "./Body/CardSkeleton";
 import { Image_Url } from "../Utils/constants";
-import useFetchData from "../Utils/useFetch";
 import { FiChevronUp,FiChevronDown } from "react-icons/fi";
 import RecFoods from "./RecFoods";
+import resDetails from "./useContextApi";
 
 
 const RestaurantMenu = () => {
@@ -12,9 +12,14 @@ const RestaurantMenu = () => {
   const { id } = useParams();
   let restaurant = [];
 
-  const data = useFetchData();
-  if (data.length > 0) {
-    const filteredRes = data.filter((res) => res.id === id);
+  //Using contextapi here
+  const { restuarants } = useContext(resDetails);
+  
+  //Before implementing contextapi used this custom hook for fetching;
+  // const restuarants = useFetchData();
+
+  if (restuarants.length > 0) {
+    const filteredRes = restuarants.filter((res) => res.id === id);
     restaurant = filteredRes[0];
   }
 

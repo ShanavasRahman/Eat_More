@@ -21,8 +21,6 @@ const currentYear = new Date().getFullYear();
  
 export function Footer() {
 
-  const { userLoggedIn } = useContext(resDetails);
-  console.log(userLoggedIn);
   return (
     <footer className="relative w-full bg-black pt-7 ">
       <div className="mx-auto w-full px-8">
