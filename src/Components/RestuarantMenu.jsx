@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import CardSkeleton from "./Body/CardSkeleton";
 import { Image_Url } from "../Utils/constants";
 import useFetchData from "../Utils/useFetch";
+import { FiChevronUp,FiChevronDown } from "react-icons/fi";
+import RecFoods from "./RecFoods";
+
 
 const RestaurantMenu = () => {
+  const [showItems, setShowItems] = useState(false);
   const { id } = useParams();
   let restaurant = [];
 
@@ -24,13 +28,17 @@ const RestaurantMenu = () => {
     );
   }
 
+  const handleData = () => {
+    setShowItems(!showItems);
+  };
+
   return (
-    <div className='p-6 bg-gray-100 min-h-screen'>
+    <div className='p-6 bg-gray-300 h-auto w-8/12 m-auto rounded-md'>
       {/* Hero Section */}
-      <div className='bg-white shadow-lg rounded-lg overflow-hidden flex flex-col lg:flex-row justify-center'>
+      <div className='bg-gray-100 shadow-lg rounded-lg overflow-hidden flex flex-col lg:flex-row justify-center py-6'>
         {/* Image Section */}
         <img
-          className='lg:w-1/4 w-full h-96 object-fill rounded-xl'
+          className='lg:w-1/4 w-full h-auto object-fill rounded-xl'
           src={`${Image_Url + restaurant.cloudinaryImageId}`}
           alt={restaurant.name}
         />
@@ -53,35 +61,22 @@ const RestaurantMenu = () => {
 
       {/* Recommended Foods Section */}
       <div className='mt-8'>
-        <h2 className='text-2xl font-semibold text-gray-800 mb-4'>
-          Recommended Foods
-        </h2>
-        <div className='flex flex-col gap-6'>
-          {restaurant.recommendedFood?.map((food, index) => (
-            <div
-              key={index}
-              className='bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-row items-center'>
-              {/* Left Side: Info */}
-              <div className='p-4 flex-1'>
-                <h3 className='text-lg font-bold text-gray-800'>{food.name}</h3>
-                <p className='text-gray-600 text-sm mt-1'>{food.description}</p>
-                <div className='mt-3 flex justify-start items-center gap-4'>
-                  <span className='text-green-600 font-semibold'>{`${food.price}`}</span>
-                  <span className='bg-blue-100 text-blue-800 text-xs font-medium px-2 py-0.5 rounded'>
-                    {`Rating: ${food.rating}`}
-                  </span>
-                </div>
-              </div>
-
-              {/* Right Side: Image */}
-              <img
-                className='w-40 h-40 object-cover rounded-r-lg'
-                src={`${Image_Url + restaurant.cloudinaryImageId}`}
-                alt={food.name}
-              />
-            </div>
-          ))}
+        <div
+          className='flex justify-between items-center  hover:cursor-pointer shadow-xl my-3 px-2 rounded-lg'
+          onClick={handleData}>
+          <h2 className='text-2xl font-semibold text-gray-800 mb-4'>
+            Recommended Foods
+          </h2>
+          <span className='text-2xl'>{showItems ? <FiChevronUp/> : <FiChevronDown/>}</span>
         </div>
+
+        {showItems && (
+          <div className="flex flex-col gap-6">
+            {restaurant.recommendedFood?.map((food, index) => (
+              <RecFoods food={food} cloudinaryImageId={restaurant.cloudinaryImageId} key={index} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

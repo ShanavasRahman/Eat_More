@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ResCard from "./ResCard";
+import ResCard, { resCardWithPromoted } from "./ResCard";
 import CardSkeleton from "./CardSkeleton";
 import { RiSearchLine } from "react-icons/ri";
 import toast from "react-hot-toast";
@@ -8,7 +8,7 @@ import { Data_Api } from "../../Utils/constants";
 import useFetchData from "../../Utils/useFetch";
 
 const Body = () => {
-  console.log("im here")
+  console.log("im here");
   const [res, setRes] = useState([]);
   const [text, setText] = useState("");
   const [filteredRestuarant, setFilteredRestuarant] = useState([]);
@@ -18,8 +18,8 @@ const Body = () => {
     if (data.length > 0) {
       setRes(data);
       setFilteredRestuarant(data);
-    }  
-  },[data])
+    }
+  }, [data]);
 
   function filterRes() {
     const filteredRes = res.filter((restuarant) => restuarant.avgRating > 4.3);
@@ -41,6 +41,8 @@ const Body = () => {
       handleSearch();
     }
   };
+
+  const PromotedResCard = resCardWithPromoted(ResCard);
 
   return filteredRestuarant.length == 0 ? (
     <div className='flex flex-wrap justify-center p-8 pt-16 gap-10 bg-gray-400'>
@@ -75,7 +77,11 @@ const Body = () => {
       <div className='flex flex-wrap p-8 gap-10 justify-center'>
         {filteredRestuarant.map((restuarant) => (
           <Link to={`/resmenu/${restuarant.id}`} key={restuarant.id}>
-            <ResCard props={restuarant} />
+            {restuarant.isPromoted ? (
+              <PromotedResCard {...restuarant}/>
+            ) : (
+              <ResCard {...restuarant} />
+            )}
           </Link>
         ))}
       </div>
