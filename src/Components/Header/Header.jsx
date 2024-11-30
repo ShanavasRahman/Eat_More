@@ -5,10 +5,16 @@ import { Link } from 'react-router-dom';
 import { CiWifiOn } from "react-icons/ci";
 import { CiWifiOff } from "react-icons/ci";
 import useOnlineStatus from '../../Utils/useStatus';
+import { useContext } from 'react';
+import resDetails from '../useContextApi';
 
 
 const Header = () => {
   const onlineStatus = useOnlineStatus();
+
+
+  const { userLoggedIn } = useContext(resDetails);
+  console.log(userLoggedIn);
   return (
     <header className=" bg-black/50 backdrop-blur-md text-white sticky top-0 z-50 shadow-[0_2.4rem_4.8rem_rgba(0,0,0,0.075)]  flex justify-around ">
       <div className="container mx-5 flex justify-between items-center py-4 w-full">
@@ -40,6 +46,7 @@ const Header = () => {
             <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer"><Link to="/services">Services</Link></li>
             <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer"><Link to="/about">About</Link></li>
             <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer"><Link to="/contact">Contact</Link></li>
+            <li className="hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer"><Link to="">Contact</Link></li>
           </ul>
           <BsCart3 className="w-8 h-8 hover:scale-125 transition-transform duration-300 cursor-pointer ml-28 text-blue-gray-700" />
           {onlineStatus?<CiWifiOn className='text-green-600 mx-16 w-10 h-10'/>:<CiWifiOff className='text-red-600 mx-16 w-10 h-10'/>}

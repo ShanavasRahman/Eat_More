@@ -33,7 +33,7 @@ const RestaurantMenu = () => {
   };
 
   return (
-    <div className='p-6 bg-gray-300 h-auto w-8/12 m-auto rounded-md'>
+    <div className='p-6 bg-gray-300 h-auto w-8/12 m-auto rounded-md my-8'>
       {/* Hero Section */}
       <div className='bg-gray-100 shadow-lg rounded-lg overflow-hidden flex flex-col lg:flex-row justify-center py-6'>
         {/* Image Section */}

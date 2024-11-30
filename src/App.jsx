@@ -9,13 +9,16 @@ import Contact from "./Components/Contact";
 import ErrorPage from "./Components/ErrorPage";
 import { lazy, Suspense } from "react";
 import CardSkeleton from "./Components/Body/CardSkeleton";
+import resDetails from "./Components/useContextApi";
 
 function App() {
   return (
     <div class='absolute top-0 z-[-2] h-auto w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]'>
       <Header />
       <Outlet />
-      <Footer />
+      <resDetails.Provider value={{userLoggedIn:"Now here is Shanu"}}>
+        <Footer />
+      </resDetails.Provider>
     </div>
   );
 }

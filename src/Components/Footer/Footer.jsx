@@ -1,4 +1,6 @@
 import { Typography } from "@material-tailwind/react";
+import { useContext } from "react";
+import resDetails from "../useContextApi";
  
 const LINKS = [
   {
@@ -18,6 +20,9 @@ const LINKS = [
 const currentYear = new Date().getFullYear();
  
 export function Footer() {
+
+  const { userLoggedIn } = useContext(resDetails);
+  console.log(userLoggedIn);
   return (
     <footer className="relative w-full bg-black pt-7 ">
       <div className="mx-auto w-full px-8">
