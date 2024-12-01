@@ -8,13 +8,14 @@ import useOnlineStatus from "../../Utils/useStatus";
 import { useContext, useState } from "react";
 import resDetails from "../useContextApi";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [searchText, setSearchText] = useState("");
   const { setFilteredRestuarant, restuarants } = useContext(resDetails);
   //Custom hook for online status
   const onlineStatus = useOnlineStatus();
-  
+
   const handleSearch = () => {
     const filteredRes = restuarants.filter((restuarant) =>
       restuarant.name.toLowerCase().includes(searchText.toLowerCase())
@@ -30,6 +31,9 @@ const Header = () => {
       handleSearch();
     }
   };
+
+  const cart = useSelector((state) => state.cart.items);
+
   return (
     <header className=' bg-black/50 backdrop-blur-md text-white sticky top-0 z-50 shadow-[0_2.4rem_4.8rem_rgba(0,0,0,0.075)]  flex justify-around '>
       <div className='container mx-5 flex justify-between items-center py-4 w-full'>
@@ -74,11 +78,14 @@ const Header = () => {
             <li className='hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer'>
               <Link to='/contact'>Contact</Link>
             </li>
-            <li className='hover:underline hover:text-yellow-300 transition-colors duration-300 cursor-pointer'>
-              <Link to=''>Contact</Link>
-            </li>
           </ul>
           <BsCart3 className='w-8 h-8 hover:scale-125 transition-transform duration-300 cursor-pointer ml-28 text-blue-gray-700' />
+          {cart.length > 0 && (
+            <div className='flex justify-center mb-5 opacity-80 items-center w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full shadow-md'>
+              <span>{cart.length}</span>
+            </div>
+          )}
+
           {onlineStatus ? (
             <CiWifiOn className='text-green-600 mx-16 w-10 h-10' />
           ) : (
