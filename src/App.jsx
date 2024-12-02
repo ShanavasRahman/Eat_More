@@ -10,6 +10,7 @@ import ErrorPage from "./Components/ErrorPage";
 import { lazy, Suspense, useState } from "react";
 import CardSkeleton from "./Components/Body/CardSkeleton";
 import resDetails from "./Components/useContextApi";
+import Cart from "./Components/Cart";
 
 function App() {
   const [filteredRestuarant, setFilteredRestuarant] = useState([]);
@@ -62,6 +63,10 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "/cart",
+        element:<Cart/>
+      }
     ],
     errorElement: <ErrorPage />,
   },

@@ -79,9 +79,11 @@ const Header = () => {
               <Link to='/contact'>Contact</Link>
             </li>
           </ul>
-          <BsCart3 className='w-8 h-8 hover:scale-125 transition-transform duration-300 cursor-pointer ml-28 text-blue-gray-700' />
+          <Link to="/cart">
+            <BsCart3 className='w-8 h-8 transition-transform duration-300 cursor-pointer ml-28 text-blue-gray-200' />
+          </Link>
           {cart.length > 0 && (
-            <div className='flex justify-center mb-5 opacity-80 items-center w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full shadow-md'>
+            <div className=' flex justify-center items-center mb-5 opacity-80 w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full shadow-md'>
               <span>{cart.length}</span>
             </div>
           )}

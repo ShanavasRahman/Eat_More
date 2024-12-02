@@ -1,6 +1,12 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Image_Url } from "../Utils/constants";
+import { addItem } from "../Utils/cartSlice";
 
 const RecFoods = ({ food, cloudinaryImageId }) => {
+  const dispatch = useDispatch();
+  const handleCart = (food) => {
+    dispatch(addItem(food));
+  }
   return (
     <div className='bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 flex items-center'>
       {/* Left Section: Food Details */}
@@ -16,11 +22,17 @@ const RecFoods = ({ food, cloudinaryImageId }) => {
       </div>
 
       {/* Right Section: Food Image */}
-      <img
-        className='w-32 h-32 object-cover rounded-r-lg'
-        src={`${Image_Url + cloudinaryImageId}`}
-        alt={food.name}
-      />
+      <div className="flex justify-center">
+        <img
+          className='w-32 h-32 object-cover rounded-r-lg'
+          src={`${Image_Url + cloudinaryImageId}`}
+          alt={food.name}
+        />
+        <button
+          className='absolute px-4 py-1 bg-gray-700 text-white font-semibold text-xl opacity-90 rounded-xl' onClick={()=>handleCart(food)}>
+          +
+        </button>
+      </div>
     </div>
   );
 };
