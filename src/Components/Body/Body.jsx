@@ -28,34 +28,37 @@ const Body = () => {
   //Higher Order Component
   const PromotedResCard = resCardWithPromoted(ResCard);
 
-  return filteredRestuarant.length == 0 ? (
-    <div className='flex flex-wrap justify-center p-8 pt-16 gap-10 bg-gray-400'>
+  return filteredRestuarant.length === 0 ? (
+    <div className='flex flex-wrap justify-center p-4 md:p-8 pt-8 md:pt-16 gap-6 md:gap-10 bg-gray-400'>
       {Array.from({ length: 10 }).map((_, index) => (
         <CardSkeleton key={index} />
       ))}
     </div>
   ) : (
     <div>
-      <div className='pl-12 pt-8 flex '>
+      {/* Filter Button Section */}
+      <div className='px-4 md:px-12 pt-4 md:pt-8 flex justify-center md:justify-start'>
         <button
-          className='bg-blue-gray-200 px-7 py-2 rounded-full text-blue-gray-900'
-          onClick={filterRes}>
-          Top rated restuarant
+          className='bg-blue-gray-200 px-6 md:px-7 py-2 rounded-full text-blue-gray-900 text-sm md:text-base shadow-md hover:bg-blue-gray-300 transition-colors' onClick={filterRes}>
+          Top rated restaurant
         </button>
       </div>
-      <div className='flex flex-wrap p-8 gap-10 justify-center'>
-        {filteredRestuarant.map((restuarant) => (
-          <Link to={`/resmenu/${restuarant.id}`} key={restuarant.id}>
-            {restuarant.isPromoted ? (
-              <PromotedResCard {...restuarant} />
+  
+      {/* Restaurants Display Section */}
+      <div className='flex flex-wrap p-4 md:p-8 gap-6 md:gap-10 justify-center'>
+        {filteredRestuarant.map((restaurant) => (
+          <Link to={`/resmenu/${restaurant.id}`} key={restaurant.id}>
+            {restaurant.isPromoted ? (
+              <PromotedResCard {...restaurant} />
             ) : (
-              <ResCard {...restuarant} />
+              <ResCard {...restaurant} />
             )}
           </Link>
         ))}
       </div>
     </div>
   );
+  
 };
 
 export default Body;
